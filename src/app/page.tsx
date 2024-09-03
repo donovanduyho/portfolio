@@ -1,36 +1,26 @@
-import { db } from "~/server/db";
-import { postsTable, usersTable } from "~/server/db/schema";
+import Link from "next/link";
+import Footer from "~/components/footer";
+import ProjectList from "~/components/project-list";
 
-export default async function HomePage() {
-  const post = await db.query.postsTable.findMany();
-
+export default function HomePage() {
   return (
-    <>
-      <form
-        action={async () => {
-          "use server";
-          await db.insert(usersTable).values({
-            name: "Test",
-            age: 20,
-            email: "test@test.com",
-            id: 1,
-          });
+    <div className="text-sm">
+      <div className="flex flex-col gap-1">
+        <h1>Donovan Ho</h1>
+        <Link href="/">
+          <span className="text-[#808080]">Resume</span>
+        </Link>
+        <Link href="/">
+          <span className="text-[#808080]">Project Logs</span>
+        </Link>
+      </div>
 
-          await db.insert(postsTable).values({
-            title: "Test",
-            content: "This is a test.",
-            userId: 1,
-          });
-        }}
-      >
-        <button>Submit</button>
-      </form>
+      <div className="mt-16 flex flex-col gap-16">
+        <ProjectList category="software" />
+        <ProjectList category="hardware" />
+      </div>
 
-      {post.map((post) => (
-        <div key={post.id}>
-          <p>{post.content}</p>
-        </div>
-      ))}
-    </>
+      <Footer />
+    </div>
   );
 }
