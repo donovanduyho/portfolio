@@ -1,12 +1,15 @@
-import { type Config } from "drizzle-kit";
+import { config } from "dotenv";
+import { defineConfig } from "drizzle-kit";
 
-import { env } from "~/env";
+config({ path: ".env" });
 
-export default {
+export default defineConfig({
   schema: "./src/server/db/schema.ts",
+  out: "./migrations",
   dialect: "sqlite",
+  driver: "turso",
   dbCredentials: {
-    url: env.DATABASE_URL,
+    url: process.env.TURSO_CONNECTION_URL!,
+    authToken: process.env.TURSO_AUTH_TOKEN!,
   },
-  tablesFilter: ["portfolio_*"],
-} satisfies Config;
+});
