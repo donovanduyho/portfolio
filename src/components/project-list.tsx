@@ -7,7 +7,7 @@ type ProjectListProps = {
 
 export default function ProjectList({ category }: ProjectListProps) {
   return (
-    <div className="text-sm">
+    <div>
       <h1 className="capitalize text-[#808080]">{category}</h1>
       <Separator className="my-3" />
     </div>
