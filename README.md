@@ -1,7 +1,10 @@
 # Donovan Ho Portfolio
 
-# To Do
+## Dashboard
 
-1. Blog
-2. Projects
-3. About
+1. Site Traffic & Analytics
+2. Upload Projects & Resume Forms
+
+## Project Logs
+
+WIP!
